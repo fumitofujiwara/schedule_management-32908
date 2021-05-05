@@ -82,4 +82,3 @@
 - belongs_to :schedule
 - belongs_to :report
 
-
