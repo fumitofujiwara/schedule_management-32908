@@ -17,82 +17,69 @@
 
 ### Association
 
-- has_many :items
-- has_many :orders
-- has_many :comments
-- has_many :favorites
+- has_many :schedules
+- has_many :schedule_comments
+- has_many :reports
+- has_many :report_comments
 
-## schedule テーブル
+## schedules テーブル
 
-| Column      | Type          | Options                        |
-| ------------| --------------| -------------------------------|
-| start_date  | data          | null: false                    |#開始
-| start_time  | time          | null: false                    |
-| ending_date | data          | null: false                    |#終了
-| ending_time | time          | null: false            　      |
-| with_name   | integer       | null: false                          |#誰と
-| content     | integer       | null: false                    |#内容
-| details     | integer       | null: false                    |#詳細
+| Column      | Type       | Options                        |
+| ------------| -----------| -------------------------------|
+| start_date  | data       | null: false                    |#開始
+| start_time  | time       | null: false                    |
+| ending_date | data       | null: false                    |#終了
+| ending_time | time       | null: false            　      |
+| content     | integer    | null: false                    |#内容
+| details     | string     | null: false                    |#詳細
 | user        | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :order
-- has_many :comments
-- has_one :favorite
+- has_many :schedule_comments
+- has_many :reports
+- has_many :report_comments
 
-## comments テーブル
+## schedule_comments テーブル
 
 | Column      | Type       | Options                        |
 | ------------| ---------- | ------------------------------ | 
 | text        | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
-| item        | references | null: false, foreign_key: true |
+| schedule    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :item
 - belongs_to :user
+- belongs_to :schedule
 
-## favorites テーブル
+## reports テーブル
 
 | Column      | Type       | Options                        |
 | ------------| ---------- | ------------------------------ | 
+| text        | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
-| item        | references | null: false, foreign_key: true |
+| schedule    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :item
+- belongs_to :schedule
 - belongs_to :user
+- has_many :report_comments
 
-## orders テーブル
+## report_comments テーブル
 
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ | 
-| user               | references | null: false, foreign_key: true |
-| item               | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| --------------| ---------- | ------------------------------ | 
+| text          | text       | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :item
-- has_one :delivery
-
-## deliveries テーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ | 
-| postal_code        | string     | null: false                    |#郵便番号
-| delivery_area_id   | integer    | null: false                    |#都道府県(配送元地域)
-| municipal_district | string     | null: false                    |#市町村区
-| address            | string     | null: false                    |#番地
-| building_name      | string     |                                |
-| phone_number       | string     | null: false                    |
-| order              | references | null: false, foreign_key: true |
+- belongs_to :schedule
+- belongs_to :report
 
 
-### Association
-
-- belongs_to :order
