@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>ユーザー新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -44,6 +44,7 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
   </div>
 
   <div class="field">
