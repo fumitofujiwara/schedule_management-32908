@@ -1,8 +1,12 @@
-<% if user_signed_in? %>
-     <li><%= "#{current_user.department.name} #{current_user.last_name}#{current_user.first_name}" %></li>
-     <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-<% else %>
-     <p>ログインしていません</p>
-     <li><%= link_to 'ログイン', new_user_session_path %></li>
-     <li><%= link_to '新規登録', new_user_registration_path %></li>
-<% end %>
+<div class="header">
+  <% if user_signed_in? %>
+    <li class="header-left"><%= "#{current_user.department.name} #{current_user.last_name}#{current_user.first_name}　  ログイン" %></li>
+    <li class="header-right"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+  <% else %>
+     <p class="header-left">ログインしていません</p>
+     <div class="header-right">
+      <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <li><%= link_to '新規登録', new_user_registration_path %></li>
+     </div>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 
 <% if user_signed_in? %>
-  <%= link_to 'スケジュール投稿', new_schedule_path %>
+  <%= link_to 'スケジュール投稿', new_schedule_path, class:"schedule-up" %>
   <% @schedules.each do |schedule| %>
     <li class="list">
       <ul>登録者
