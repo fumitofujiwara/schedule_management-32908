@@ -1,7 +1,8 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_schedule, only: [:edit, :update, :destroy]
-  
+  before_action :move_to_index, only: [:edit, :update, :destroy]
+
   def index
     @schedules = Schedule.all.order("ending_date DESC")
   end
@@ -47,5 +48,10 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
   end
 
-
+  def move_to_index
+    unless current_user.id == @schedule.user.id
+      redirect_to action: :index
+    end
+  end
+  
 end
