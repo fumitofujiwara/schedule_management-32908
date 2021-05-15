@@ -17,6 +17,12 @@
       <%= schedule.content %></ul>
       <ul>予定の詳細
       <%= schedule.detail %></ul>
+      <ul>
+      <%= link_to 'スケジュール編集', edit_schedule_path(schedule.id), class: "schedule-update" %>
+      </ul>
+      <ul>
+      <%= link_to 'スケジュール削除', schedule_path(schedule.id), method: :delete, class: "schedule-delete" %>
+      </ul>
     </li>
   <% end %>
 <% end %>
