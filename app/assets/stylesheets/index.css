@@ -1,0 +1,73 @@
+/* リセットCSS */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+ul,
+li,
+h1,
+h2,
+p,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
+  color: #3b4043;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: #3b4043;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0 auto;
+}
+
+.header-left {
+  background-color: #ddd;
+  width: 300px;
+  height: 100px;
+  padding-top: 25px;
+  padding-left: 25px;
+}
+
+
+.header-right {
+  background-color: lightblue;
+  width: calc(100vw - 300px);
+  padding-right: 100px;
+  padding-top: 25px;
+  text-align: right;
+  height: 100px;
+  color: black;
+  border: none;
+  display: inline-block;
+  flex-direction: column;
+}
+
+.list {
+  width: 500px;
+  border: 1px solid;
+  text-align: right;
+  margin:20px; 100px 0 0;
+  padding: 20px;
+  float: right;
+  flex-direction: column;
+}

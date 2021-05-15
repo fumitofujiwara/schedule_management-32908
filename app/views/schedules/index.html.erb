@@ -1,0 +1,22 @@
+<%= render "shared/header" %>
+
+<%= link_to 'スケジュール投稿', new_schedule_path, class:"schedule-up" %>
+
+<% if user_signed_in? %>
+  <% @schedules.each do |schedule| %>
+    <li class="list">
+      <ul>登録者
+      <%= schedule.user.department.name %>
+      <%= schedule.user.last_name %>
+      <%= schedule.user.first_name %></ul>
+      <ul>開始時刻
+      <%= schedule.start_date %></ul>
+      <ul>終了時刻
+      <%= schedule.ending_date %></ul>
+      <ul>予定の内容
+      <%= schedule.content %></ul>
+      <ul>予定の詳細
+      <%= schedule.detail %></ul>
+    </li>
+  <% end %>
+<% end %>

@@ -26,12 +26,10 @@
 
 | Column      | Type       | Options                        |
 | ------------| -----------| -------------------------------|
-| start_date  | data       | null: false                    |#開始
-| start_time  | time       | null: false                    |
-| ending_date | data       | null: false                    |#終了
-| ending_time | time       | null: false            　      |
-| content     | integer    | null: false                    |#内容
-| details     | string     | null: false                    |#詳細
+| start_date  | datetime   | null: false                    |#開始
+| ending_date | datetime   | null: false                    |#終了
+| content     | string     | null: false                    |#内容
+| detail      | text       | null: false                    |#詳細
 | user        | references | null: false, foreign_key: true |
 
 ### Association

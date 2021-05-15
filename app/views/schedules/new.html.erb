@@ -1,0 +1,34 @@
+
+<%= form_with(model: @schedule,local: true) do |f| %><div class="">
+  <%= render 'shared/error_messages', model: @schedule %>
+      <div class="">
+        開始時刻
+        <span class="">必須</span>
+      </div>
+      <%= f.datetime_select :start_date, {use_month_numbers: true, start_year: Date.today.year},{} %> 
+      <div class="">
+        終了時刻
+        <span class="">必須</span>
+      </div>
+      <%= f.datetime_select :ending_date, {use_month_numbers: true, start_year: Date.today.year},{}%>
+      <div class="">
+        <div class="">
+          予定の内容
+        </div>
+        <span class="">必須</span>
+        <%= f.text_area :content %>
+      </div>
+
+      <div class="">
+        <div class="">
+          予定の詳細
+        </div>
+        <span class="">必須</span>
+        <%= f.text_area :detail %>
+      </div>
+  <div class=''>
+    <%= f.submit "スケジュール登録" ,class:"" %>
+  </div>
+<% end %>
+
+<%= link_to 'スケジュール一覧へ戻る', root_path, class:"" %>
