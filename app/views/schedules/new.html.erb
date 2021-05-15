@@ -1,6 +1,6 @@
 
 <%= form_with(model: @schedule,local: true) do |f| %><div class="">
-  
+  <%= render 'shared/error_messages', model: @schedule %>
       <div class="">
         開始時刻
         <span class="">必須</span>
@@ -15,6 +15,7 @@
         <div class="">
           予定の内容
         </div>
+        <span class="">必須</span>
         <%= f.text_area :content %>
       </div>
 
@@ -22,6 +23,7 @@
         <div class="">
           予定の詳細
         </div>
+        <span class="">必須</span>
         <%= f.text_area :detail %>
       </div>
   <div class=''>
