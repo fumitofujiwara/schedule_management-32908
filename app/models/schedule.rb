@@ -7,7 +7,9 @@ class Schedule < ApplicationRecord
   validate :start_ending_check
 
   def start_ending_check
-    errors.add(:ending_date, "終了時刻は開始時刻より遅い時間を選択してください。") if self.start_date > self.ending_date
+    if self.start_date >= self.ending_date
+      errors.add(:ending_date, "終了時刻は開始時刻より遅い時間を選択してください。")
+    end
   end
   
 end
