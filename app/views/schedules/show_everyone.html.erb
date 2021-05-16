@@ -40,6 +40,8 @@
           <ul class="schedules">【予定の詳細・提出書類】
             <%= schedule.detail %>
           </ul>
+          <div class="schedules-comments">
+            <%= link_to 'コメント投稿', schedule_comments_path(@schedule.id) %>
           <% if schedule.user.id == current_user.id %>
             <ul class="schedules-update-delete">
               <%= link_to 'スケジュール編集', edit_schedule_path(schedule.id), class: "schedule-update" %>
