@@ -1,6 +1,7 @@
 class Schedule < ApplicationRecord
   belongs_to :user
-
+  has_many :schedule_comments
+  
   with_options presence: true do 
     validates :start_date, :ending_date, :content, :detail
   end
