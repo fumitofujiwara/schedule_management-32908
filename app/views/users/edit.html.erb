@@ -4,8 +4,8 @@
       <h2>ユーザー情報編集</h2>
     </div>
     <div class='account-page__inner--right user-form'>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_with model: @user, local: true do |f|%>
+        
         <div class="field">
           <div class='field-label'>
             <%= f.label "部署" %><br />
@@ -22,7 +22,7 @@
         <div class='field-label'>
           <%= f.label "メールアドレス" %><br />
         </div>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"field-input" %>
+          <%= f.email_field :email, class:"field-input" %>
       </div>
     <div class="field">
       <div class='field-label'>
@@ -31,7 +31,7 @@
           <em>(英数字<%= @minimum_password_length %>文字以上)</em>
         <% end %><br />
       </div>
-        <%= f.password_field :password, autocomplete: "new-password", class:"field-input" %>
+        <%= f.password_field :password, class:"field-input" %>
     </div>
 
     <div class="field">
@@ -40,18 +40,13 @@
       </div>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"field-input" %>
     </div>
-      <div class="field">
-        <%= f.label "旧パスワード" %> <br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class:"field-input" %>
-     </div>
-
     <div class="actions">
       <%= f.submit "更新する", class: :btn %>
     </div>
     <% end %>
 
     <div class="actions-return">
-      <%= link_to "一つ前へ戻る", :back, class: :btn %>
+      <%= link_to "一つ前へ戻る", root_path, class: :btn %>
     </div>
   </div>
 </div>
