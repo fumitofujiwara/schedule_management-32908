@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
-    @schedules = Schedule.all.order("ending_date DESC")
+    @schedules = Schedule.all.order("ending_date ASC")
   end
 
   def new
@@ -18,6 +18,14 @@ class SchedulesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @schedules = Schedule.all.order("ending_date ASC")
+  end
+
+  def show_everyone
+    @schedules = Schedule.all.order("ending_date ASC")
   end
 
   def edit

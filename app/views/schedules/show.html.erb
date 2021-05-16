@@ -1,0 +1,51 @@
+<%= render "shared/header" %>
+<div class="main-header">
+<div class="main-header-left">
+  <% if user_signed_in? %>
+    <li class="department-list">
+      <ul class="department-name">
+        <%= link_to '役員', '#' %>
+      </ul>
+      <ul class="department-name">
+        <%= link_to '営業', '#' %>
+      </ul>
+      <ul class="department-name">
+        <%= link_to '経理', '#' %>
+      </ul>
+      <ul class="department-name">
+        <%= link_to '総務', '#' %>
+      </ul>
+    </li>
+  <% end %>
+</div>
+<div class="main-header-right">
+  <%= link_to '【スケジュール投稿画面へ】', new_schedule_path, class: :schedule_up %>
+  <%= link_to '【みんなのスケジュール画面へ】', show_everyone_schedules_path, class: :schedule_up %>
+      <% current_user.schedules.each do |schedule| %>
+        <li class="list">
+          <ul class="schedules">【登録者】
+            <%= schedule.user.department.name %>
+            <%= schedule.user.last_name %>
+            <%= schedule.user.first_name %>
+          </ul>
+          <ul class="schedules">【開始時刻】
+            <%= schedule.start_date %>
+          </ul>
+          <ul class="schedules">【終了時刻】
+            <%= schedule.ending_date %>
+          </ul>
+          <ul class="schedules">【予定の内容】
+            <%= schedule.content %>
+          </ul>
+          <ul class="schedules">【予定の詳細・提出書類】
+            <%= schedule.detail %>
+          </ul>
+          <% if schedule.user.id == current_user.id %>
+            <ul class="schedules-update-delete">
+              <%= link_to 'スケジュール編集', edit_schedule_path(schedule.id), class: "schedule-update" %>
+              <%= link_to 'スケジュール削除', schedule_path(schedule.id), method: :delete, class: "schedule-delete" %>
+            </ul>
+          <% end %>
+        </li>
+      <% end %>
+</div>

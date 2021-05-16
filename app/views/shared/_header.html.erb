@@ -1,7 +1,10 @@
 <div class="header">
   <% if user_signed_in? %>
-    <li class="header-left"><%= "#{current_user.department.name} #{current_user.last_name}#{current_user.first_name}　  ログイン" %></li>
-    <li class="header-right"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <div class="header-left"><%=  link_to "#{current_user.department.name} #{current_user.last_name}#{current_user.first_name}", root_path %>　　ログイン</div>
+    <div class="header-right">
+      <li><%= link_to 'ユーザー編集', edit_user_path(current_user) %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    </div>
   <% else %>
      <p class="header-left">ログインしていません</p>
      <div class="header-right">
