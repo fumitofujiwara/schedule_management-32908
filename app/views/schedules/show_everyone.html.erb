@@ -41,7 +41,11 @@
             <%= schedule.detail %>
           </ul>
           <div class="schedules-comments">
-            <%= link_to 'コメント投稿・確認', schedule_path(schedule.id) %>
+            <%= link_to 'コメント投稿・確認', schedule_path(schedule.id), class: "comment-confirm" %>
+              <div class="comment-count">コメント数
+                <%= schedule.schedule_comment_ids.length %>
+              </div>
+          </div>
           <% if schedule.user.id == current_user.id %>
             <ul class="schedules-update-delete">
               <%= link_to 'スケジュール編集', edit_schedule_path(schedule.id), class: "schedule-update" %>

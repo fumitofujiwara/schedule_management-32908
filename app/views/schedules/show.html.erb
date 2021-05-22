@@ -40,27 +40,29 @@
        <%= @schedule.detail %>
       </ul>
     </li>
-</div>
-<h1>コメント投稿・確認ページ</h1>
-<div class="comment-box">
-    <% if user_signed_in? %>
-      <%= form_with(model: [@schedule, @schedule_comment], local: true) do |f| %>
+
+  <div class="comment-new">スケジュールの内容・確認コメント</div>
+    <div class="comment-box">
+      <% if user_signed_in? %>
+        <%= form_with(model: [@schedule, @schedule_comment], local: true) do |f| %>
           <%= f.text_field :text, class:"comment-text" %><br />
-        <p class="comment-warn">
-          相手のことを考え丁寧なコメントを心がけましょう。
-          <br>
-          不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        </p>
           <%= f.submit "コメントする", class:"comment-btn" %>
       <% end %>
       <div class="comments_list">
         【コメント一覧】
-        <% @schedule_comments.each do |comment| %>
+          <% @schedule_comments.each do |comment| %>
           <li class="comment_list">
             <%= comment.text %>
-             (<%= comment.user.last_name %>)
+             (<%= comment.user.department.name %>
+               <%= comment.user.last_name %>
+               <%= comment.user.first_name %>)
+          </li>
+          <li class="comment_date">
+            <%= comment.created_at %>
           </li>
         <% end %>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
+</div>
