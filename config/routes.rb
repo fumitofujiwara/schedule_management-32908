@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
   resources :schedules do
     collection do
+      get 'show_myself'
       get 'show_everyone'
-      resources :schedule_comments
     end
+    resources :schedule_comments
   end
   
 end

@@ -21,7 +21,7 @@
 <div class="main-header-right">
   <% if user_signed_in? %>
     <%= link_to '【スケジュール投稿画面へ】', new_schedule_path, class: :schedule_up %>
-    <%= link_to '【自分のスケジュール画面へ】', schedule_path(@schedules), class: :schedule_up %>
+    <%= link_to '【自分のスケジュール画面へ】', show_myself_schedules_path, class: :schedule_up %>
     <%= link_to '【みんなのスケジュール画面へ】', show_everyone_schedules_path, class: :schedule_up %>
   <% else %>
     <div class="schedule_up">ログインしてください</div>

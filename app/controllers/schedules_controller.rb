@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :set_schedule, only: [:edit, :update, :destroy]
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
@@ -21,7 +21,13 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @schedules = Schedule.all.order("ending_date ASC")
+    @schedule_comment = ScheduleComment.new
+    @schedule_comments = @schedule.schedule_comments.includes(:user)
+  end
+
+  def show_myself
+    schedules = Schedule.all
+    @schedules = current_user.schedules.order("ending_date ASC")
   end
 
   def show_everyone
