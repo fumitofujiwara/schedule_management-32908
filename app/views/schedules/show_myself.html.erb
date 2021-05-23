@@ -19,8 +19,8 @@
   <% end %>
 </div>
 <div class="main-header-right">
-    <%= link_to '【スケジュール投稿画面へ】', new_schedule_path, class: :schedule_up %>
-    <%= link_to '【自分のスケジュール画面へ】', show_myself_schedules_path, class: :schedule_up %>
+  <%= link_to '【スケジュール投稿画面へ】', new_schedule_path, class: :schedule_up %>
+  <%= link_to '【みんなのスケジュール画面へ】', show_everyone_schedules_path, class: :schedule_up %>
       <% @schedules.each do |schedule| %>
         <li class="list">
           <ul class="schedules">【登録者】

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :schedules
+  has_many :schedule_comments
   
   with_options presence: true do
     validates :last_name, :first_name, :last_name_furigana, :first_name_furigana, :department, :position
