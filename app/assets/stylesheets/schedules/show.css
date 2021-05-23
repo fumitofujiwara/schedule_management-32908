@@ -48,4 +48,5 @@
 .comment-count {
   margin-left: 20px;
   color: orange;
+  text-decoration: underline;
 }
