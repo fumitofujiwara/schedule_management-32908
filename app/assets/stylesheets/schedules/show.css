@@ -50,3 +50,22 @@
   color: orange;
   text-decoration: underline;
 }
+
+.report-make {
+  display: flex;
+}
+
+.report {
+  margin: 100px;
+  display: inline-block;
+  padding: 1.4em 1.6em;
+  font-size: 0.8em;
+  color: #fff;
+  text-decoration: none;
+  user-select: none;
+  background: lightgreen;
+  border: 1px lightgreen solid;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.2s ease;
+}
