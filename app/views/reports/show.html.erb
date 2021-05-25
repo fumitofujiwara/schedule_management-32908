@@ -1,0 +1,15 @@
+<div class= report>
+  <p>報告書の完成</p>
+<div class="message">
+  <div class="upper-message">
+  <% @schedule.reports.each do |report| %>
+      <>
+        <%= image_tag report.image.variant(resize: '500x500'), class: 'message-image' %>
+    <div class="message-user">
+      <!-- 投稿したユーザー名情報を出力する -->
+      <%= report.text %>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>
