@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'show_everyone'
     end
     resources :schedule_comments
+    resources :reports
   end
   
 end

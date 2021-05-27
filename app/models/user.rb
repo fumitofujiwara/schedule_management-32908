@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   has_many :schedules
   has_many :schedule_comments
+  has_many :reports
   
   with_options presence: true do
     validates :last_name, :first_name, :last_name_furigana, :first_name_furigana, :department, :position

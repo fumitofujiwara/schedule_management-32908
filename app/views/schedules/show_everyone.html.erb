@@ -1,23 +1,6 @@
 <%= render "shared/header" %>
 <div class="main-header">
-<div class="main-header-left">
-  <% if user_signed_in? %>
-    <li class="department-list">
-      <ul class="department-name">
-        <%= link_to '役員', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '営業', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '経理', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '総務', '#' %>
-      </ul>
-    </li>
-  <% end %>
-</div>
+<%= render "shared/head_left"%>
 <div class="main-header-right">
     <%= link_to '【スケジュール投稿画面へ】', new_schedule_path, class: :schedule_up %>
     <%= link_to '【自分のスケジュール画面へ】', show_myself_schedules_path, class: :schedule_up %>

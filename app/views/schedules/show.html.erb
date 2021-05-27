@@ -1,46 +1,39 @@
 <%= render "shared/header" %>
 <div class="main-header">
-<div class="main-header-left">
-  <% if user_signed_in? %>
-    <li class="department-list">
-      <ul class="department-name">
-        <%= link_to '役員', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '営業', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '経理', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '総務', '#' %>
-      </ul>
-    </li>
-  <% end %>
-</div>
+  <%= render "shared/head_left"%>
 <div class="main-header-right">
   <%= link_to '【スケジュール投稿画面へ】', new_schedule_path, class: :schedule_up %>
+  <%= link_to '【自分のスケジュール画面へ】', show_myself_schedules_path, class: :schedule_up %>
   <%= link_to '【みんなのスケジュール画面へ】', show_everyone_schedules_path, class: :schedule_up %>
-    <li class="list">
-      <ul class="schedules">【登録者】
-       <%= @schedule.user.department.name %>
-       <%= @schedule.user.last_name %>
-       <%= @schedule.user.first_name %>
-      </ul>
-      <ul class="schedules">【開始時刻】
-       <%= @schedule.start_date %>
-      </ul>
-      <ul class="schedules">【終了時刻】
-       <%= @schedule.ending_date %>
-      </ul>
-      <ul class="schedules">【予定の内容】
-        <%= @schedule.content %>
-      </ul>
-      <ul class="schedules">【予定の詳細・提出書類】
-       <%= @schedule.detail %>
-      </ul>
-    </li>
-
+    <div class= "report-make">
+      <li class="list">
+        <ul class="schedules">【登録者】
+          <%= @schedule.user.department.name %>
+          <%= @schedule.user.last_name %>
+          <%= @schedule.user.first_name %>
+        </ul>
+        <ul class="schedules">【開始時刻】
+         <%= @schedule.start_date %>
+        </ul>
+        <ul class="schedules">【終了時刻】
+         <%= @schedule.ending_date %>
+        </ul>
+        <ul class="schedules">【予定の内容】
+          <%= @schedule.content %>
+        </ul>
+        <ul class="schedules">【予定の詳細・提出書類】
+          <%= @schedule.detail %>
+        </ul>
+      </li>
+     <div class="report">
+      <%= link_to '報告書作成', new_schedule_report_path(@schedule.id), class: "report-writing" %>
+      <% if @schedule.reports.ids.nil?%>
+        <% else %>
+        <a>報告書が完成しています。</a>
+      <% end %>
+      <%= link_to '報告書確認', schedule_report_path(@schedule.id), class: "report-confirmation" %>
+     </div>
+    </div>
   <div class="comment-new">スケジュールの内容・確認コメント</div>
     <div class="comment-box">
       <% if user_signed_in? %>
