@@ -26,14 +26,14 @@
         </ul>
       </li>
      <div class="report">
-      <%= link_to '報告書作成', new_schedule_report_path(@schedule.id), class: "report-writing" %>
-      <% if @schedule.reports.ids.nil?%>
-        <% else %>
-        <a>報告書が完成しています。</a>
+      <% if @schedule.user_id == current_user.id %>
+        <%= link_to '報告書作成', new_schedule_report_path(@schedule.id), class: "report-writing" %>
       <% end %>
-      <%= link_to '報告書確認', schedule_report_path(@schedule.id), class: "report-confirmation" %>
+      <% if @schedule.report_ids.length != 0 %>
+       <%= link_to '報告書確認', schedule_report_path(@schedule.id), class: "report-confirmation" %>
+      <% end %>
      </div>
-    </div>
+  </div>
   <div class="comment-new">スケジュールの内容・確認コメント</div>
     <div class="comment-box">
       <% if user_signed_in? %>

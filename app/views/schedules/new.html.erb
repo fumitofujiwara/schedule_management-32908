@@ -2,32 +2,29 @@
 <h2 class="page-heading">スケジュール新規投稿</h2>
 <%= form_with(model: @schedule,local: true,class: :schedule_new) do |f| %>
   <%= render 'shared/error_messages', model: @schedule %>
-      <div class="">
-        開始時刻
-        <span class="">(必須)</span>
-      </div>
-      <%= f.datetime_select :start_date, {use_month_numbers: true, start_year: Date.today.year},{} %> 
-      <div class="">
-        終了時刻
-        <span class="">(必須)</span>
-      </div>
-      <%= f.datetime_select :ending_date, {use_month_numbers: true, start_year: Date.today.year},{}%>
-      <div class="">
-        <div class="">
-          予定の内容
-          <span class="">(必須)</span>
-        </div>
-        <%= f.text_area :content, class: :form__text %>
-      </div>
-
-      <div class="">
-        <div class="">
-          予定の詳細
-          <span class="">(必須)</span>
-        </div>
-        <%= f.text_area :detail, class: :form__text %>
-      </div>
-    <%= f.submit "スケジュール登録" ,class: :schedule_btn %>
+    <div>
+     開始時刻
+     <span>(必須)</span>
+    </div>
+    <%= f.datetime_select :start_date, {use_month_numbers: true, start_year: Date.today.year},{} %> 
+    <div>
+      終了時刻
+      <span>(必須)</span>
+    </div>
+    <%= f.datetime_select :ending_date, {use_month_numbers: true, start_year: Date.today.year},{}%>
+    <div>
+      予定の内容
+      <span>(必須)</span>
+    </div>
+    <%= f.text_area :content, class: :form__text %>
+    <div>
+      予定の詳細
+      <span>(必須)</span>
+    </div>
+    <%= f.text_area :detail, class: :form__text %>
+    <div>
+      <%= f.submit "スケジュール登録" ,class: :schedule_btn %>
+    </div>
 <% end %>
 
 <%= link_to 'スケジュール一覧へ戻る', root_path, class: :schedule_return %>

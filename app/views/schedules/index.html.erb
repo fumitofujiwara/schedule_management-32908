@@ -2,20 +2,7 @@
 <div class="main-header">
 <div class="main-header-left">
   <% if user_signed_in? %>
-    <li class="department-list">
-      <ul class="department-name">
-        <%= link_to '役員', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '営業', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '経理', '#' %>
-      </ul>
-      <ul class="department-name">
-        <%= link_to '総務', '#' %>
-      </ul>
-    </li>
+    <%= render "shared/head_left"%>
   <% end %>
 </div>
 <div class="main-header-right">

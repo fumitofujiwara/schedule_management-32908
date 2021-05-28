@@ -1,21 +1,20 @@
 <%= render "shared/header" %>
-<div class="main-header">
-  <%= render "shared/head_left"%>
-  <%= form_with(model: [@schedule,@report], local: true) do |f| %>
-  <div class="img-upload">
-    <h2 class="page-heading">報告書用写真</h2>
-    <div class="click-upload">
-      <p>クリックしてファイルをアップロード</p>
-      <%= f.file_field :image, id:"report-image" %>
-    </div> 
-  </div>
-  <div class="new-items">
-    <div class="weight-bold-text">
-      報告書の詳細
-    </div>
-    <%= f.text_area :text, class:"report-text", id:"report-name" %>
-  </div>
-  <%= f.submit "報告書の作成", class:"sell-btn" %>
-  <%=link_to 'もどる', root_path, class:"back-btn" %>
-  <% end %>
-</div>
+<h2 class="page-heading">報告書(写真・詳細)</h2>
+<%= form_with(model: [@schedule,@report], local: true, class: :report_new) do |f| %>
+ <div class="img-upload">
+  <div class="click-upload">
+    <p>写真投稿(クリックしてファイルをアップロード)</p>
+    <%= f.file_field :image, id:"report-image", class: "report-image" %>
+  </div> 
+ </div>
+ <div class="new-items">
+   <div class="weight-bold-text">
+     報告書の詳細
+   </div>
+   <%= f.text_area :text, class:"report-text", id:"report-name" %>
+ </div>
+ <%= f.submit "報告書の作成", class:"report-btn" %>
+ <div class= "back-btn">
+   <%=link_to 'もどる', root_path %>
+ </div>
+<% end %>
