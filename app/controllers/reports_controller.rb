@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   def new
     @schedule = Schedule.find(params[:schedule_id])
+    move_to_index
     @report = Report.new
   end
 
@@ -22,6 +23,12 @@ class ReportsController < ApplicationController
   
   def report_params
     params.require(:report).permit(:image, :text).merge(user_id: current_user.id, schedule_id: params[:schedule_id])
+  end
+  
+  def move_to_index
+    unless current_user.id == @schedule.user.id
+      redirect_to root_path
+    end
   end
   
 end

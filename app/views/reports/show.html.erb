@@ -1,20 +1,22 @@
 <%= render "shared/header" %>
 <div class="main-header">
-<%= render "shared/head_left"%>
-<div class= report>
-  <p>報告書の完成</p>
-<div class="message">
-  <div class="upper-message">
-  <% @schedule.reports.each do |report| %>
-      写真の投稿
-        <%= image_tag report.image.variant(resize: '500x500'), class: 'message-image' %>
-    <div class="message-user">
-      <!-- 投稿したユーザー名情報を出力する -->
-      <%= report.text %>
+  <%= render "shared/head_left"%>
+  <div class= report>
+    <h2 class="report-title">【報告書】</h2>
+    <div class="message">
+      <div class="upper-message">
+        <% @schedule.reports.each do |report| %>
+          <p class="picture-up">写真の投稿</p>
+          <div class="pictures">
+            <%= image_tag report.image.variant(resize: '500x500'), class: 'message-image' %>
+          </div>
+          <h2 class="picture-text">報告書内容</h2>
+          <div class="report-text">
+            <%= report.text %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <% end %>
+    <%= link_to "スケジュール画面へ", root_path%>
   </div>
-</div>
-</div>
-<%= link_to "スケジュール画面へ", root_path%>
 </div>
