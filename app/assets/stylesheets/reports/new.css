@@ -29,10 +29,21 @@
 
 /* レポートの投稿showページ */
 
-.report-title {
-  font-size: 30px;
+.report-content {
+  font-size: 50px;
+  padding-bottom: 10px;
 }
 
+.report-title {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.pictures {
+  border: 1px solid;
+  padding: 30px;
+  margin-bottom: 20px;
+}
 .picture-up {
   display: inline-block;
   padding: 0.4em 1.6em;
@@ -47,7 +58,7 @@
   transition: 0.2s ease;
 }
 
-.pictures {
+.picture {
   margin: 20px 0;
   border: 1px solid;
   padding: 20px;
