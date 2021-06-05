@@ -19,6 +19,7 @@
             <%= report.text %>
          </div>
          <%= link_to 'レポート編集', edit_schedule_report_path(@schedule.id, report.id), method: :get %>
+         <%= link_to 'レポート削除', schedule_report_path(@schedule.id, report.id), method: :delete %>
        </div>
     <% end %>
     <%= link_to "スケジュール画面へ", schedule_path(@schedule.id) %>
