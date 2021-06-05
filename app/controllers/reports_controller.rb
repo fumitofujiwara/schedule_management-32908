@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_schedule, only: [:index, :new, :create, :show, :edit, :update]
+  before_action :set_schedule, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   def index
     @reports = Report.all
@@ -33,6 +33,12 @@ class ReportsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+    redirect_to schedule_reports_path(@schedule.id)
   end
 
 
