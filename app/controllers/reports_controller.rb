@@ -1,12 +1,16 @@
 class ReportsController < ApplicationController
+  before_action :set_schedule, only: [:index, :new, :create, :show, :edit, :update]
+
+  def index
+    @reports = Report.all
+  end
+
   def new
-    @schedule = Schedule.find(params[:schedule_id])
     move_to_index
     @report = Report.new
   end
 
   def create
-    @schedule = Schedule.find(params[:schedule_id])
     @report = Report.create(report_params)
     if @report.save
       redirect_to schedule_path(@schedule.id)
@@ -16,13 +20,31 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @schedule = Schedule.find(params[:schedule_id])
   end
+
+  def edit
+    @report = Report.find(params[:id])
+  end
+
+  def update
+    @report = Report.find(params[:id])
+    if @report.update(report_params)
+      redirect_to schedule_reports_path(@schedule.id)
+    else
+      render :edit
+    end
+  end
+
+
 
   private
   
   def report_params
     params.require(:report).permit(:image, :text).merge(user_id: current_user.id, schedule_id: params[:schedule_id])
+  end
+
+  def set_schedule
+    @schedule = Schedule.find(params[:schedule_id])
   end
   
   def move_to_index
@@ -30,5 +52,7 @@ class ReportsController < ApplicationController
       redirect_to root_path
     end
   end
+
+
   
 end
