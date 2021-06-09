@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_schedule, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @reports = Report.all
@@ -55,7 +56,7 @@ class ReportsController < ApplicationController
   
   def move_to_index
     unless current_user.id == @schedule.user.id
-      redirect_to root_path
+      redirect_to action: :index
     end
   end
 

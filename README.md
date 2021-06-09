@@ -20,7 +20,6 @@
 - has_many :schedules
 - has_many :schedule_comments
 - has_many :reports
-- has_many :report_comments
 
 ## schedules テーブル
 
@@ -37,7 +36,6 @@
 - belongs_to :user
 - has_many :schedule_comments
 - has_many :reports
-- has_many :report_comments
 
 ## schedule_comments テーブル
 
@@ -64,19 +62,4 @@
 
 - belongs_to :schedule
 - belongs_to :user
-- has_many :report_comments
-
-## report_comments テーブル
-
-| Column        | Type       | Options                        |
-| --------------| ---------- | ------------------------------ | 
-| text          | text       | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| item          | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :schedule
-- belongs_to :report
 
